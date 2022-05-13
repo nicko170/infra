@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - cluster-secrets.yaml
   - cluster-settings.yaml
-  - regcred.yaml
