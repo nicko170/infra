@@ -22,3 +22,4 @@ spec:
     cloudflare:
       email: ${SECRET_CLUSTER_CF_EMAIL}
       apiKey: ${SECRET_CLUSTER_CF_API_KEY}
+      proxied: false
