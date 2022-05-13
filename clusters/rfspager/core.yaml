@@ -7,7 +7,8 @@ metadata:
 spec:
   interval: 10m0s
   dependsOn:
-    - name: base-custom
+    - name: config
+    - name: charts
   path: ./clusters/core
   prune: false
   sourceRef:
@@ -18,7 +19,7 @@ spec:
     secretRef:
       name: sops-gpg
   postBuild:
-    substitute: {}
+    substitute: { }
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings
