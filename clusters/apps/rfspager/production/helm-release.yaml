@@ -74,6 +74,9 @@ spec:
             - production.${SECRET_CLUSTER_DOMAIN}
           secretName: production.${SECRET_CLUSTER_DOMAIN}
 
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+
     redis:
       enabled: true
 
