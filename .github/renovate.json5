@@ -1,0 +1,90 @@
+{
+  "extends": [
+    ":enableRenovate",
+    "config:base",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    "docker:enableMajor",
+    ":enablePreCommit",
+  ],
+  hostRules: [
+    {
+      hostType: "docker",
+      username: "nick170",
+      encrypted: {
+        password: "wcFMA/xDdHCJBTolAQ/+Jj2e2+v0EzZnlUkSfBpBW64QkdswBnGZEUB74qaQcyXusk7MQg88GqfHq4wY68xZVcGBbnMYvaoigkRlvIL7rcIe5Dvw42OocQtlX+/vCVoub97cI+a6Biw/BDKAtG2223vjS315Rxtt6IMlJlb5cAuYxiN0t8HOODS258I6akZiMi6x1/m8VHPILF+vnHo3Hgfb7bdils7f2lG34mxprX8aVuAB8vk7u5PNLnthNvaySNqjGkiC+MF1VD4TYsm3hjMNpCAM43O7+N/mSsWpCLjMl99FVjIxzDx/SmTMdEC+VbInXpDDG4O5GnUCSr3FSL8LoZ6EZuvyr+FiAbmSKVfDLnQ+tf/vkv4Ba7l1RG1b8q93qrMc7rPk4NAiz7FrCOY1Bw9iJFqO4lg/c6s+ON7LgBu6LorA1CSD502LmmxPQrBgP5gom9o5BzdVD0SSkD4aIwI/EKuoBDeJJQIEjR3RoJVAbkBuHmLlzFKpN2cSqWCW5L9ViN68cYShQbp5X8+FJRbAzbKi5XyixEQLTLjHvy7rNCr4ouZGIW88rP0hRKYv5De5eavexr995p1qADUhBkttfi/TFnh51XIa/5zDBaVO6soKiLNwfuQqAMhAK3oG5Wo9MhALcIFt7gT2KBWUheeJedAchVZcZ6ypiAun6YLMLRpm5OSnKqhpVebSWgHj9d4a82S8v+XVvsBBwlo+OrfNgdPgPjWuGo/BUuP0MJvpYtOU065JtiYB+al0inUkgDLz0EXgwzAAON2ILDUbKfh8/Zc7mF5iSCWrqJelnYu5edRSNzNy1g"
+      }
+    }
+  ],
+  "platform": "github",
+  "username": "nicko170",
+  "repositories": [
+    "nicko170/infra"
+  ],
+  "onboarding": false,
+  "requireConfig": false,
+  "gitAuthor": "DevLAN-io[bot] <172667+DevLAN-io[bot]@users.noreply.github.com>",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": [
+    "prIgnoreNotification"
+  ],
+  "rebaseWhen": "conflicted",
+  "ignorePaths": [
+    "cluster/base/",
+    "**/backup-job.yaml",
+    "**/trash-updater-job.yaml"
+  ],
+  // set up renovate managers
+  "docker-compose": {
+    "fileMatch": [
+      "(^|\/)docker-compose.*\.ya?ml$",
+      "(^|\/)docker-compose.*\.ya?ml\.j2$"
+    ]
+  },
+  "helm-values": {
+    "fileMatch": [
+      "clusters/.+/helm-release\\.yaml$",
+      "clusters/.+/helm-release\\.yaml$"
+    ]
+  },
+  "helmv3": {
+    "fileMatch": [
+      "charts/.+/Chart\\.yaml$"
+    ]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "cluster/.+\\.yaml$",
+      "clusters/.+\\.yaml$"
+    ]
+  },
+  "flux": {
+    "fileMatch": [
+      "cluster/.+\\.yaml$",
+      "clusters/.+\\.yaml$",
+    ]
+  },
+  "packageRules": [
+    {
+      matchUpdateTypes: [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      automerge: true
+    },
+    {
+      "matchDatasources": [
+        "helm"
+      ],
+      "ignoreDeprecated": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "commitMessageExtra": "to {{newVersion}}"
+    }
+  ]
+}
