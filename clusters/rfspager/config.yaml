@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./clusters/rfspager/config
+  path: ./clusters/config/rfspager
   prune: false
   sourceRef:
     kind: GitRepository
@@ -15,10 +15,3 @@ spec:
     provider: sops
     secretRef:
       name: sops-gpg
-  postBuild:
-    substitute: {}
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-settings
-      - kind: Secret
-        name: cluster-secrets
