@@ -23,7 +23,7 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '10254'
 
-      replicaCount: 2
+      replicaCount: 1
       service:
         type: LoadBalancer
         loadBalancerIP: ${SECRET_INGRESS_LB_IP}
