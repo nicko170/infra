@@ -20,4 +20,4 @@ spec:
         - name: default
           protocol: layer2
           addresses:
-            - ${SECRET_INGRESS_LB_IP}
+            - ${SECRET_INGRESS_LB_IP}/32
