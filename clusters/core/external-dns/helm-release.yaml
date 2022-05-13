@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  releaseName: external-dns
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.bitnami.com/bitnami
+      chart: external-dns
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: flux-system
+  interval: 5m
+  values:
+    provider: cloudflare
+    sources:
+      - ingress
+    cloudflare:
+      email: ${SECRET_CLUSTER_CF_EMAIL}
+      apiKey: ${SECRET_CLUSTER_CF_API_KEY}

@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - metallb
   - ingress-nginx
+  - external-dns
