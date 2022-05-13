@@ -50,26 +50,6 @@ spec:
           memory: 250Mi
           cpu: 50m
 
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-          namespace: networking
-          namespaceSelector:
-            any: true
-
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                    - key: app.kubernetes.io/name
-                      operator: In
-                      values:
-                        - ingress-nginx
-                topologyKey: kubernetes.io/hostname
 
     defaultBackend:
       enabled: true
