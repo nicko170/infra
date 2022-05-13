@@ -7,4 +7,5 @@ resources:
   - secrets.yaml
   - secret-files.yaml
   - regcred.yaml
+  - postgres-startup-scripts.yaml
   - helm-release.yaml
