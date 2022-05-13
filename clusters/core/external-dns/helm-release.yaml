@@ -12,7 +12,7 @@ spec:
       chart: external-dns
       sourceRef:
         kind: HelmRepository
-        name: external-dns
+        name: bitnami-charts
         namespace: flux-system
   interval: 5m
   values:
