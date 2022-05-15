@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: docker.io/nick170/rfspager
-      tag: v1.2.1
+      tag: v1.2.2
 
     imagePullSecrets:
       - name: regcred
@@ -36,7 +36,7 @@ spec:
       schedule: "*/1 * * * *"
 
     worker:
-      enabled: false
+      enabled: true
       count: 5
       command: /cnb/process/worker
 
