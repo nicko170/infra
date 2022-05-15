@@ -27,7 +27,7 @@ spec:
 
     web:
       enabled: true
-      count: 3
+      count: 1
       command: /cnb/process/web
 
     cron:
@@ -37,7 +37,7 @@ spec:
 
     worker:
       enabled: true
-      count: 5
+      count: 1
       command: /cnb/process/worker
 
     env:
