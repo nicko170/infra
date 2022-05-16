@@ -31,13 +31,13 @@ spec:
       command: /cnb/process/web
 
     cron:
-      enabled: false
+      enabled: true
       command: /cnb/process/schedule
       schedule: "*/1 * * * *"
 
     worker:
       enabled: true
-      count: 1
+      count: 2
       command: /cnb/process/worker
 
     env:
@@ -64,15 +64,15 @@ spec:
       ingressClassName: "nginx"
 
       hosts:
-        - host: production.${SECRET_CLUSTER_DOMAIN}
+        - host: ${SECRET_CLUSTER_DOMAIN}
           paths:
             - path: /
               pathType: Prefix
 
       tls:
         - hosts:
-            - production.${SECRET_CLUSTER_DOMAIN}
-          secretName: production.${SECRET_CLUSTER_DOMAIN}
+            - ${SECRET_CLUSTER_DOMAIN}
+          secretName: ${SECRET_CLUSTER_DOMAIN}
 
       annotations:
         cert-manager.io/cluster-issuer: "letsencrypt-production"
