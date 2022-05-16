@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=http://charts.npratley.net
       chart: laravel
-      version: 0.0.8
+      version: 0.0.9
       sourceRef:
         kind: HelmRepository
         name: nicko170-charts
@@ -20,14 +20,14 @@ spec:
   values:
     image:
       repository: docker.io/nick170/rfspager
-      tag: v1.1.7
+      tag: v1.2.4
 
     imagePullSecrets:
       - name: regcred
 
     web:
       enabled: true
-      count: 3
+      count: 1
       command: /cnb/process/web
 
     cron:
@@ -36,8 +36,8 @@ spec:
       schedule: "*/1 * * * *"
 
     worker:
-      enabled: false
-      count: 5
+      enabled: true
+      count: 1
       command: /cnb/process/worker
 
     env:
@@ -85,7 +85,7 @@ spec:
 
       image:
         repository: bitnami/postgresql
-        tag: 14.2.0
+        tag: 14.3.0
         pullPolicy: IfNotPresent
 
       global:
