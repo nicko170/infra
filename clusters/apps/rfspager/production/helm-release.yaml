@@ -20,14 +20,14 @@ spec:
   values:
     image:
       repository: docker.io/nick170/rfspager
-      tag: v1.2.4
+      tag: v1.2.5
 
     imagePullSecrets:
       - name: regcred
 
     web:
       enabled: true
-      count: 1
+      count: 3
       command: /cnb/process/web
 
     cron:
