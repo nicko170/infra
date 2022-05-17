@@ -9,3 +9,4 @@ resources:
   - regcred.yaml
   - postgres-startup-scripts.yaml
   - helm-release.yaml
+  - clients
