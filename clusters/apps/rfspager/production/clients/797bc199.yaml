@@ -18,8 +18,9 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
+  ingressClassName: nginx
   rules:
-    - host: rfspager-797bc199.${SECRET_CLUSTER_DOMAIN}
+    - host: &domain rfspager-797bc199.${SECRET_CLUSTER_DOMAIN}
       http:
         paths:
           - pathType: Prefix
@@ -29,3 +30,7 @@ spec:
                 name: internal-797bc199
                 port:
                   number: 3000
+  tls:
+    - hosts:
+        - *domain
+      secretName: *domain
