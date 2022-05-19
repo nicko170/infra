@@ -9,11 +9,11 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://releases.rancher.com/server-charts/latest
-      chart: laravel
-      version: 0.0.9
+      chart: rancher
+      version: 2.3.6
       sourceRef:
         kind: HelmRepository
-        name: nicko170-charts
+        name: rancher-charts
         namespace: flux-system
       interval: 5m
 
