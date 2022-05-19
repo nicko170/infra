@@ -8,3 +8,4 @@ resources:
   - k8s-at-home.yaml
   - metallb-charts.yaml
   - nicko170-charts.yaml
+  - rancher-charts.yaml
