@@ -7,5 +7,6 @@ resources:
   - jetstack-charts.yaml
   - k8s-at-home.yaml
   - metallb-charts.yaml
+  - minio-charts.yaml
   - nicko170-charts.yaml
   - rancher-charts.yaml
