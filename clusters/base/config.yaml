@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m0s
-  path: ./clusters/config1
+  path: ./clusters/config
   prune: false
   sourceRef:
     kind: GitRepository
