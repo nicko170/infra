@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.bitnami.com/bitnami
       chart: mysql
-      version: 8.8.27
+      version: 9.0.4
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -20,7 +20,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/mysql
-      tag: 8.0.28-debian-10-r23
+      tag: 8.0.29-debian-10-r23
       pullPolicy: IfNotPresent
 
     primary:
