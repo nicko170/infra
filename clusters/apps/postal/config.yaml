@@ -1,0 +1,82 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: postal-config
+  namespace: postal
+data:
+  signing.key: |-2
+    ${SECRET_POSTAL_SIGNING_KEY}
+
+  postal.yml: |-
+    general:
+      # This can be changed to allow messages to be sent from multiple IP addresses
+      use_ip_pools: false
+
+    web:
+      # The host that the management interface will be available on
+      host: postal.${SECRET_CLUSTER_DOMAIN}
+      # The protocol that requests to the management interface should happen on
+      protocol: https
+
+    web_server:
+      # Specify configuration for the Postal web server
+      bind_address: 0.0.0.0
+      port: 5000
+
+    smtp_server:
+      # Specify configuration to the Postal SMTP server
+      port: 2525
+
+    logging:
+      # Specify options for the logging
+      stdout: true
+
+    main_db:
+      # Specify the connection details for your MySQL database
+      host: postal-mysql
+      username: postal
+      password: ${SECRET_POSTAL_MARIADB_PASS}
+      database: postal
+
+    message_db:
+      # Specify the connection details for your MySQL server that will be house the
+      # message databases for mail servers.
+      host: postal-mysql
+      username: root
+      password: ${SECRET_POSTAL_MARIADB_PASS}
+      prefix: postal
+
+    rabbitmq:
+      # Specify connection details for your RabbitMQ server
+      host: postal-rabbitmq-headless
+      username: postal
+      password: ${SECRET_POSTAL_RABBITMQ_PASS}
+      vhost: postal
+
+    dns:
+      # Specify the DNS records that you have configured. Refer to the documentation at
+      # https://github.com/atech/postal/wiki/Domains-&-DNS-Configuration for further
+      # information about these.
+      mx_records:
+        - mx.postal.${SECRET_CLUSTER_DOMAIN}
+      smtp_server_hostname: smtp.postal.${SECRET_CLUSTER_DOMAIN}
+      spf_include: spf.postal.${SECRET_CLUSTER_DOMAIN}
+      return_path: rp.postal.${SECRET_CLUSTER_DOMAIN}
+      route_domain: routes.postal.${SECRET_CLUSTER_DOMAIN}
+      track_domain: track.postal.${SECRET_CLUSTER_DOMAIN}
+
+    smtp:
+      # Specify an SMTP server that can be used to send messages from the Postal management
+      # system to users. You can configure this to use a Postal mail server once the
+      # your installation has been set up.
+      host: postal-smtp
+      port: 2525
+      username: # Complete when Postal is running and you can
+      password: # generate the credentials within the interface.
+      from_name: Postal
+      from_address: postal.${SECRET_CLUSTER_DOMAIN}
+
+    rails:
+      # This is generated automatically by the config initialization. It should be a random
+      # string unique to your installation.
+      secret_key: ${SECRET_POSTAL_RAILS_KEY}

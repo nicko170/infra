@@ -1,0 +1,61 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postal-smtp
+  namespace: postal
+  annotations:
+    metallb.universe.tf/allow-shared-ip: key-to-share-postal
+    metallb.universe.tf/address-pool: default
+    external-dns.alpha.kubernetes.io/hostname: mx.postal.${SECRET_CLUSTER_DOMAIN},smtp.postal.${SECRET_CLUSTER_DOMAIN}
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "false"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 25
+      targetPort: 2525
+      name: smtp1
+    - port: 2525
+      targetPort: 2525
+      name: smtp2
+  selector:
+    process_type: postal-smtp
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postal-web
+  namespace: postal
+spec:
+  ports:
+    - port: 5000
+      targetPort: 5000
+  selector:
+    process_type: postal-web
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: postal-web
+  namespace: postal
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: &domain postal.${SECRET_CLUSTER_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: postal-web
+                port:
+                  number: 5000
+  tls:
+    - hosts:
+        - *domain
+      secretName: *domain
