@@ -23,14 +23,9 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '10254'
 
-      replicaCount: 1
+      replicaCount: 3
       service:
         type: LoadBalancer
-        loadBalancerIP: ${SECRET_INGRESS_LB_IP}
-
-        annotations:
-          metallb.universe.tf/allow-shared-ip: key-to-share-${SECRET_INGRESS_LB_IP}
-          metallb.universe.tf/address-pool: default
 
       publishService:
         enabled: true
@@ -41,15 +36,6 @@ spec:
         enable-vts-status: "false"
         hsts-max-age: "31449600"
         proxy-body-size: "50m"
-
-      extraArgs:
-        default-ssl-certificate: "networking/${SECRET_CLUSTER_CERTIFICATE_DEFAULT}"
-
-      resources:
-        requests:
-          memory: 250Mi
-          cpu: 50m
-
 
     defaultBackend:
       enabled: true
