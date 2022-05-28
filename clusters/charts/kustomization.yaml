@@ -9,4 +9,6 @@ resources:
   - metallb-charts.yaml
   - minio-charts.yaml
   - nicko170-charts.yaml
+  - postgres-operator-charts.yaml
+  - postgres-operator-ui-charts.yaml
   - rancher-charts.yaml
