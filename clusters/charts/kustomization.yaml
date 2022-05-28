@@ -6,6 +6,7 @@ resources:
   - ingress-nginx-charts.yaml
   - jetstack-charts.yaml
   - k8s-at-home.yaml
+  - kasten-charts.yaml
   - metallb-charts.yaml
   - minio-charts.yaml
   - nicko170-charts.yaml
