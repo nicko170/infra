@@ -13,3 +13,4 @@ resources:
   - postgres-operator-charts.yaml
   - postgres-operator-ui-charts.yaml
   - rancher-charts.yaml
+  - vmware-tanzu-charts.yaml
