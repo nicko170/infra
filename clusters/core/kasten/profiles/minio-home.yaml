@@ -1,0 +1,24 @@
+kind: Profile
+apiVersion: config.kio.kasten.io/v1alpha1
+metadata:
+  name: minio-home
+  namespace: kasten-io
+spec:
+  locationSpec:
+    type: ObjectStore
+    objectStore:
+      endpoint: http://192.168.15.2:9000
+      name: kasten
+      objectStoreType: S3
+      path: k10/52c400ef-4745-48d4-92f8-14b96360c7b2/migration
+      pathType: Directory
+      region: minio
+      skipSSLVerify: true
+    credential:
+      secretType: AwsAccessKey
+      secret:
+        apiVersion: v1
+        kind: secret
+        name: minio-home-secret
+        namespace: kasten-io
+  type: Location

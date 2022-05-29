@@ -1,0 +1,23 @@
+---
+kind: Profile
+apiVersion: config.kio.kasten.io/v1alpha1
+metadata:
+  name: ceph-replicapool
+  namespace: kasten-io
+spec:
+  infra:
+    credential:
+      secretType: CephKeyring
+      secret:
+        apiVersion: v1
+        kind: secret
+        name: ceph-replicapool-secret
+        namespace: kasten-io
+    ceph:
+      monitor: rook-ceph-mon-a.rook-ceph.svc.cluster.local,rook-ceph-mon-b.rook-ceph.svc.cluster.local,rook-ceph-mon-c.rook-ceph.svc.cluster.local
+      pool: replicapool
+    type: Ceph
+  type: Infra
+status:
+  validation: Success
+  hash: 940068759
