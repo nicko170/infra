@@ -37,6 +37,7 @@ spec:
       tokenAuth:
         enabled: true
     clusterName: k8s
+
     ingress:
       create: true
       class: nginx
@@ -47,5 +48,9 @@ spec:
       tls:
         enabled: true
         secretName: *domain
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+
     grafana:
       enabled: false
