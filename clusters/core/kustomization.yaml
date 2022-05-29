@@ -6,4 +6,4 @@ resources:
   - cert-manager
   - external-dns
   - ingress-nginx
-  - velero
+  - kasten
