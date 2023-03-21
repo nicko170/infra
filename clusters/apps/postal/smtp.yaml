@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: postal-smtp
-          image: ghcr.io/postalserver/postal:2.1.1
+          image: ghcr.io/postalserver/postal:2.1.2
           imagePullPolicy: IfNotPresent
           command:
             - postal
