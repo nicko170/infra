@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: postal-requeuer
-          image: ghcr.io/postalserver/postal:2.1.1
+          image: ghcr.io/postalserver/postal:3.3.4
           imagePullPolicy: IfNotPresent
           command:
             - postal
