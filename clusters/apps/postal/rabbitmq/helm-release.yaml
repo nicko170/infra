@@ -21,7 +21,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/rabbitmq
-      tag: 3.9.13-debian-10-r38
+      tag: 4.0.2-debian-12-r2
       pullPolicy: IfNotPresent
 
     persistence:
