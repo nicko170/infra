@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cron
-          image: ghcr.io/postalserver/postal:2.1.1
+          image: ghcr.io/postalserver/postal:2.3.2
           imagePullPolicy: IfNotPresent
           command:
             - postal
